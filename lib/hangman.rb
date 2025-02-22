@@ -32,17 +32,14 @@ class Game
         end
     end
 
-    def is_winner?
+    def is_winner_or_loser?
       if game_board == secret_word
         puts 'You win!'
-        true
+        return true
       end
-    end
-
-    def is_loser?
       if strikes == 7
         puts 'You lose!'
-        true
+        return true
       end
     end
 
@@ -51,11 +48,10 @@ class Game
     end
 
     def play_game
-        puts "The secret word is: #{secret_word.join('')}"
         puts "START: #{game_board}"
-        until is_loser? || is_winner? do
+        until is_winner_or_loser? do
+            puts "CHEAT: #{self.secret_word}"
             self.handle_turn
-            p self.secret_word
             p self.game_board
         end
     end
