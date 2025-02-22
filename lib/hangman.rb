@@ -1,11 +1,10 @@
 class Game
-    attr_accessor(:game_board, :strikes, :secret_word, :guess, :victory)
+    attr_accessor(:game_board, :strikes, :secret_word, :guess)
     def initialize
         @game_board = []
         @strikes = 0
         @secret_word = ''
         @guess = ''
-        @victory = false
     end
 
     def generate_secret_word
@@ -36,7 +35,14 @@ class Game
     def is_winner?
       if game_board == secret_word
         puts 'You win!'
-        self.victory = true
+        true
+      end
+    end
+
+    def is_loser?
+      if strikes == 7
+        puts 'You lose!'
+        true
       end
     end
 
@@ -47,13 +53,10 @@ class Game
     def play_game
         puts "The secret word is: #{secret_word.join('')}"
         puts "START: #{game_board}"
-        until victory do
+        until is_loser? || is_winner? do
             self.handle_turn
             p self.secret_word
             p self.game_board
-            if is_winner?
-              break
-            end
         end
     end
 end
