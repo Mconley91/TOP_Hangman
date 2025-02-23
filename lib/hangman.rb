@@ -86,3 +86,5 @@ current_game.generate_secret_word
 current_game.draw_board
 puts 'Enter a letter to decode the secret word! Type SAVE or LOAD to save or load a previous session.'
 current_game.play_game
+
+#test
