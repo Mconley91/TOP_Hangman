@@ -28,7 +28,7 @@ class Game
           end
           arr_of_indexes.each {|indexer| self.game_board[indexer] = guess}
         else
-          puts "Incorrect guess! Strikes: #{self.strikes += 1}"
+          puts "Incorrect guess! Tries Left: #{7 - (self.strikes += 1)}"
         end
     end
 
@@ -38,7 +38,7 @@ class Game
         return true
       end
       if strikes == 7
-        puts 'You lose!'
+        puts "You lose! The secret word was #{secret_word.join('')}"
         return true
       end
     end
@@ -61,4 +61,3 @@ current_game = Game.new()
 current_game.generate_secret_word
 current_game.draw_board
 current_game.play_game
-
